@@ -1,1 +1,3 @@
 sdfsdfsdfsf
+void main(){
+}
