@@ -1,3 +1,0 @@
-sdfsdfsdfsf
-void main(){
-}
