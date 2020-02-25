@@ -8,6 +8,7 @@ resource "aws_instance" "web" {
   instance_type     = "${var.instance_type}"
   security_groups  = "${aws_security_group.instance.id}"
   key_name      = "${aws_key_pair.keys.key_name}"
+  user_data = "${data.template_file.myuserdata.template}"
   
   tags = {
     Name = "Appsone-${count.index+1}"
