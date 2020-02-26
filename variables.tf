@@ -12,20 +12,21 @@ variable "amis" {
 variable "instance_type" {
   default = "t2.micro"
 }
-variable "ami_id" {
-  default = "ami_ids"
-}
 variable "aws_key" {
   default = "appsone_key"
 }
-variable "pub_key" {
-  default = "ssh+++++++public key"
+variable "key_path" {
+  description = "Public key path"
+  default = "C:/Users/prakash.r/keyfornodes.key.pub"
 }
 variable "cidr_block" {
-  default = "0.0.0.0/0"
+  default = ["0.0.0.0/0"]
 }
-data "template_file" "myuserdata" {
-  template = "${file("${templates}/appsone_prqs.tpl")}"
+data "template_file" "master_data" {
+  template = "${file("../templates/master_prqs.sh")}"
+}
+data "template_file" "slaves_data" {
+  template = "${file("../templates/slaves_prqs.sh")}"
 }
 
 data "aws_availability_zones" "all" {}
